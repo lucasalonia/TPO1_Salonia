@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TPO1_Salonia">
         <activity
-            android:name=".MainActivity"
+            android:name=".views.SetearConversionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
