@@ -16,6 +16,9 @@ import com.ig.tpo1_salonia.databinding.ActivitySetearConversionBinding;
 import com.ig.tpo1_salonia.models.Conversion;
 import com.ig.tpo1_salonia.viewModels.SetearConversionActivityViewModel;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SetearConversionActivity extends AppCompatActivity {
     private ActivitySetearConversionBinding binding;
     private SetearConversionActivityViewModel viewModel;
@@ -34,10 +37,16 @@ public class SetearConversionActivity extends AppCompatActivity {
         viewModel.getConversionMutable().observe(this, new Observer<Conversion>() {
             @Override
             public void onChanged(Conversion conversion) {
-                viewModel.volverAMain(conversion);
-                finish();
 
+                HashMap<Double, Double> mapa = conversion.getTasasDeCambio();
+                for (Map.Entry<Double, Double> entrada : mapa.entrySet()) {
+                    Double dolar = entrada.getKey();
+                    Double peso = entrada.getValue();
+                    binding.etEditDolar.setText(dolar.toString());
+                    binding.etEditPeso.setText(peso.toString());
+                }
             }
         });
+        viewModel.recibirDatosDeNavegacion(getIntent());
     }
 }

@@ -34,9 +34,18 @@ public class SetearConversionActivityViewModel extends AndroidViewModel {
             c.agregarTasa(dClave, pValor);
 
             getConversionMutable().setValue(c);
+            volverAMain(c);
         }
     }
+    public void recibirDatosDeNavegacion(Intent intent) {
+        if (intent != null && intent.hasExtra("converion_para_modificar")) {
+            Conversion c = (Conversion) intent.getSerializableExtra("converion_para_modificar");
 
+            if (c != null) {
+                conversionMutable.setValue(c);
+            }
+        }
+    }
     public void volverAMain(Conversion conversion){
         if (conversion != null) {
             Intent resultado = new Intent(getApplication(), MainActivity.class);

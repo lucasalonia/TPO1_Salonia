@@ -40,13 +40,27 @@ public class MainActivity extends AppCompatActivity {
                     Double peso = entrada.getValue();
                     mainBinding.tvTasa.setText(dolar+" USD = "+peso +" ARS");
                 }
+
+                mainBinding.tvMostrarConversion.setText(conversion.getValorConvertido()+"");
             }
         });
 
+        mainBinding.btnCambiarValor.setOnClickListener(v -> {
+            mainActivityViewModel.enviarDatosDeConversion();
+        });
+
+        mainBinding.btnConvertir.setOnClickListener(v -> {
+            String etPeso = mainBinding.etPeso.getText().toString();
+            String etDolar = mainBinding.etDolar.getText().toString();
+            boolean convertirDolares = mainBinding.rbDolarAPeso.isChecked();
+            boolean convertirPesos = mainBinding.rbPesoADolar.isChecked();
+            mainActivityViewModel.convertir(etDolar,etPeso, convertirPesos, convertirDolares);
+
+        });
         mainActivityViewModel.recibirDatosDeNavegacion(getIntent());
 
         mainActivityViewModel.cargarConversionInicial();
-        mainActivityViewModel.test();
+
 
 
     }

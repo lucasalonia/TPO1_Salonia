@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 public class Conversion implements Serializable {
-    private double dolarAConvertir;
-    private double pesoAConvertir;
+    private double valorConvertido;
     private HashMap<Double, Double> tasasDeCambio;
 
     public Conversion() {
@@ -16,26 +15,12 @@ public class Conversion implements Serializable {
         this.tasasDeCambio.put(valorDolar, valorPeso);
     }
 
-    public double getTasa(String nombre) {
-        if (this.tasasDeCambio.containsKey(nombre)) {
-            return this.tasasDeCambio.get(nombre);
-        }
-        return 0.0;
+    public double getValorConvertido() {
+        return valorConvertido;
     }
 
-    public double getDolarAConvertir() {
-        return dolarAConvertir;
-    }
-
-    public void setDolarAConvertir(double dolarAConvertir) {
-        this.dolarAConvertir = dolarAConvertir;
-    }
-    public double getPesoAConvertir() {
-        return pesoAConvertir;
-    }
-
-    public void setPesoAConvertir(double pesoAConvertir) {
-        this.pesoAConvertir = pesoAConvertir;
+    public void setValorConvertido(double valorConvertido) {
+        this.valorConvertido = valorConvertido;
     }
 
     public HashMap<Double, Double> getTasasDeCambio() {
