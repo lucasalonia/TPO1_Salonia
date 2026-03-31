@@ -5,6 +5,11 @@ import java.util.HashMap;
 
 public class Conversion implements Serializable {
     private double valorConvertido;
+
+    /**
+     * Se opto por clave valor. Me parecio una solucion mas concreta aunque hay que hacer un foreach
+     * siempre que se quiera buscar el unico registro del mapa
+     */
     private HashMap<Double, Double> tasasDeCambio;
 
     public Conversion() {

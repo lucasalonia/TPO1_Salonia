@@ -26,6 +26,13 @@ public class SetearConversionActivityViewModel extends AndroidViewModel {
         }
         return conversionMutable;
     }
+
+    /**
+     * Guarda los datos ingresados por el usuario en el objeto de tipo mutable con parametro de
+     * la clase conversion
+     * @param dolar valor ingresado por el usuario. Determinará la llave del mapa
+     * @param peso valor ingresado por el usuario. Determinará el valor asociado a la llave
+     */
     public void guardarConversionYVolver(String dolar, String peso) {
 
         if (!dolar.isEmpty() && !peso.isEmpty()) {
@@ -36,13 +43,18 @@ public class SetearConversionActivityViewModel extends AndroidViewModel {
                 Conversion c = new Conversion();
                 c.agregarTasa(dClave, pValor);
 
-                getConversionMutable().setValue(c);
+                conversionMutable.setValue(c);
                 volverAMain(c);
             }catch (NumberFormatException e){
                 Log.e("ERROR_CONVERSION", "Formato de numero invalido en guardarConversionYVolver()");
             }
         }
     }
+
+    /**
+     * Si en la vista principal hay informacion sobre la tasa este metodo la recibe y configura los
+     * valores para el objeto mutable
+     */
     public void recibirDatosDeNavegacion(Intent intent) {
         if (intent != null && intent.hasExtra("converion_para_modificar")) {
             Conversion c = (Conversion) intent.getSerializableExtra("converion_para_modificar");
@@ -52,6 +64,12 @@ public class SetearConversionActivityViewModel extends AndroidViewModel {
             }
         }
     }
+
+    /**
+     * Vuelve al main y envia un objeto de tipo Conversion para que el "MainActivityViewModel" lo
+     * guarde en su mutable local
+     * @param conversion objeto a comunicar
+     */
     public void volverAMain(Conversion conversion){
         if (conversion != null) {
             Intent resultado = new Intent(getApplication(), MainActivity.class);

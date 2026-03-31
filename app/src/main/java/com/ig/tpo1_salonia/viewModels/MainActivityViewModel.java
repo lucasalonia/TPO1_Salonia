@@ -29,6 +29,12 @@ public class MainActivityViewModel extends AndroidViewModel {
         }
         return conversionMutable;
     }
+
+    /**
+     * Este metodo se encarga de redirigir a una segunda vista en caso que el mutuable sea nulo.
+     * Garantiza que exista un objeto Conversion con tasas de referencia, mientras dure la sesion,
+     * antes de permitir cálculos en la pantalla principal.
+     */
     public void cargarConversionInicial(){
         if(conversionMutable.getValue() == null){
             Intent i = new Intent(getApplication(), SetearConversionActivity.class);
@@ -37,6 +43,11 @@ public class MainActivityViewModel extends AndroidViewModel {
 
         }
     }
+
+    /**
+     * Si ya existen datos en la tasa de cambio los envia a la segunda vista para que el usuario
+     * vea los valores que modificará
+     */
     public void enviarDatosDeConversion(){
         if(conversionMutable!=null){
             Intent resultado = new Intent(getApplication(), SetearConversionActivity.class);
@@ -46,6 +57,11 @@ public class MainActivityViewModel extends AndroidViewModel {
             getApplication().startActivity(resultado);
         }
     }
+
+    /**
+     * Recibe el Intent de la configuracion de la tasa de cambio proveniente de
+     * "SetearConversionActivityViewModel" y modifica los datos del objeto mutable
+     */
     public void recibirDatosDeNavegacion(Intent intent) {
         if (intent != null && intent.hasExtra("conversion_nueva")) {
             Conversion c = (Conversion) intent.getSerializableExtra("conversion_nueva");
@@ -55,13 +71,22 @@ public class MainActivityViewModel extends AndroidViewModel {
             }
         }
     }
+
+    /**
+     * Realiza el cálculo de conversión. Y luego modifica el objeto mutable para poder utilizar los
+     * valores de la conversion en la vista
+     * @param etDolar valor ingresado por el usuario. Se paresea a double para operaciones
+     * @param etPeso valor ingresado por el usuario. Se paresea a double para operaciones
+     * @param esPesoADolar Direccion de la conversion, calcula el valor de los pesos en dolares.
+     * @param esDolarAPeso Direccion de la conversion, calcula el valor de los dolares en pesos.
+     */
     public void convertir(String etDolar, String etPeso, boolean esPesoADolar, boolean esDolarAPeso) {
         Conversion conversion = getConversionMutable().getValue();
         if (conversion == null) return;
 
         HashMap<Double, Double> mapa = conversion.getTasasDeCambio();
 
-        Log.d("TAG", "fefefe");
+
         double refDolar = 0;
         double refPeso = 0;
         for (Map.Entry<Double, Double> entrada : mapa.entrySet()) {
