@@ -84,7 +84,7 @@ public class MainActivityViewModel extends AndroidViewModel {
                 conversionMutable.setValue(conversion);
             }
         } catch (NumberFormatException e) {
-            Log.e("ERROR_CONV", "Error al parsear el monto");
+            Log.e("ERROR_CONVERSION", "Error al parsear el monto en convertir()");
         }
     }
 }

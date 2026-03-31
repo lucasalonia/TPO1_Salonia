@@ -89,32 +89,36 @@
         android:layout_margin="24dp"
         android:background="#E0E0E0"
         android:padding="12dp"
-        android:gravity="center_vertical"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/etPeso"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:text="Tipo de cambio" />
+            android:text="Tipo de cambio"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
         <TextView
             android:id="@+id/tvTasa"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginTop="8dp"
             android:textColor="#000000"
-            android:text="" />
+            android:text="..." />
 
         <Button
             android:id="@+id/btnCambiarValor"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="EDITAR"
             android:textColor="#3DDC84" />
-
 
     </LinearLayout>
 
@@ -158,15 +162,17 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="183dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
         android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnConvertir">
 
         <TextView
             android:id="@+id/textView2"

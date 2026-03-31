@@ -32,8 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:ems="10"
-            android:inputType="text"
-            android:text="USD" />
+            android:inputType="numberDecimal"
+            android:hint="USD" />
 
         <TextView
             android:id="@+id/textView5"
@@ -48,8 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:ems="10"
-            android:inputType="text"
-            android:text="ARS" />
+            android:inputType="numberDecimal"
+            android:hint="ARS" />
 
         <Button
             android:id="@+id/btAplicarTipoCambio"

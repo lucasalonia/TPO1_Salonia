@@ -2,6 +2,7 @@ package com.ig.tpo1_salonia.viewModels;
 
 import android.app.Application;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -26,15 +27,20 @@ public class SetearConversionActivityViewModel extends AndroidViewModel {
         return conversionMutable;
     }
     public void guardarConversionYVolver(String dolar, String peso) {
+
         if (!dolar.isEmpty() && !peso.isEmpty()) {
-            Double dClave = Double.parseDouble(dolar);
-            Double pValor = Double.parseDouble(peso);
+            try {
+                Double dClave = Double.parseDouble(dolar);
+                Double pValor = Double.parseDouble(peso);
 
-            Conversion c = new Conversion();
-            c.agregarTasa(dClave, pValor);
+                Conversion c = new Conversion();
+                c.agregarTasa(dClave, pValor);
 
-            getConversionMutable().setValue(c);
-            volverAMain(c);
+                getConversionMutable().setValue(c);
+                volverAMain(c);
+            }catch (NumberFormatException e){
+                Log.e("ERROR_CONVERSION", "Formato de numero invalido en guardarConversionYVolver()");
+            }
         }
     }
     public void recibirDatosDeNavegacion(Intent intent) {
