@@ -8,6 +8,7 @@
     tools:context=".views.SetearConversionActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="307dp"
         android:layout_height="247dp"
         android:layout_marginStart="68dp"
@@ -32,8 +33,8 @@
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:hint="USD" />
+            android:hint="USD"
+            android:inputType="numberDecimal" />
 
         <TextView
             android:id="@+id/textView5"
@@ -48,8 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:hint="ARS" />
+            android:hint="ARS"
+            android:inputType="numberDecimal" />
 
         <Button
             android:id="@+id/btAplicarTipoCambio"
@@ -57,4 +58,21 @@
             android:layout_height="59dp"
             android:text="Confirmar" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="134dp"
+        android:layout_marginEnd="201dp"
+        android:layout_marginBottom="88dp"
+        android:text="Ingrese Tasa de Cambio"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.376"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
